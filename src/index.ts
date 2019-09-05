@@ -46,7 +46,7 @@ export function graphqlLodash(query: string | DocumentNode, operationName?: stri
 
   const stripedQuery = stripQuery(queryAST);
   return {
-    query: typeof query === 'string' ? print(stripedQuery) : stripedQuery,
+    query: typeof query === 'string' ? stripQuery(print(stripedQuery)) : stripedQuery,
     transform: data => applyLodashDirective(pathToArgs, data)
   };
 }
